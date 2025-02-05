@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record model="ir.actions.server" id="approve_customer_feedback">
+            <field name="name">Approve</field>
+            <field name="model_id" ref="tech_order1.model_customer_feedback"></field>
+            <field name="binding_model_id" ref="tech_order1.model_customer_feedback"/>
+            <field name="state">code</field>
+            <field name="code">if records:
+    for rec in records:
+        rec.action_approved()
+            </field>
+        </record>
+    </data>
+</odoo>

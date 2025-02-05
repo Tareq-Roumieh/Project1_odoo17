@@ -1,0 +1,90 @@
+<odoo>
+    <data>
+<!--         Meal Category-->
+        <record id="order_meal_category_form_view" model="ir.ui.view">
+            <field name="name">view.cat.meal.form</field>
+            <field name="model">order.meal.category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="order_meal_category_window_action" model="ir.actions.act_window">
+            <field name="name">Meal Category</field>
+            <field name="res_model">order.meal.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+<!--        Meal-->
+        <record id="order_meal_form_view" model="ir.ui.view">
+            <field name="name">order.meal.form.view</field>
+            <field name="model">order.meal</field>
+             <field name="arch" type="xml">
+                 <form>
+                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_feedback" type="object" class="oe_stat_button"
+                                    icon="fa-pencil-square-o" string="Feedback">
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="category_id"/>
+                                <field name="price"/>
+                            </group>
+                        </group>
+                         <notebook>
+                            <page name="ingredient" string="Ingredient">
+                                <field name="ingredient_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="product_id"/>
+                                        <field name="quantity"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                     </sheet>
+                 </form>
+             </field>
+        </record>
+
+        <record id="order_meal_tree_view" model="ir.ui.view">
+            <field name="name">order.meal.tree.view</field>
+            <field name="model">order.meal</field>
+            <field name="arch" type="xml">
+                <tree>
+                     <field name="name"/>
+                     <field name="price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="order_meal_window_action" model="ir.actions.act_window">
+            <field name="name">Meal</field>
+            <field name="res_model">order.meal</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Orders" id="order_base_menu"
+        web_icon="tech_order1,static/src/img/icon.png"/>
+        
+        <menuitem name="Meals" id="order_base_meal_menu"
+        parent="order_base_menu"/>
+
+        <menuitem name="Meals" id="order_meal_menu"
+        action="tech_order1.order_meal_window_action"
+        parent="order_base_meal_menu" sequence="20"/>
+        <menuitem
+            id="order_meal_category_menu"
+            name="Meal Category"
+            action="order_meal_category_window_action"
+            parent="order_base_meal_menu"
+        />
+    </data>
+</odoo>

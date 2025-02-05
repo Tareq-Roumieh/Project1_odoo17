@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Odoo Development</title>
+    </head>
+    <body>
+        <div class="document" id="odoo_development">
+            <h1 class="title">Odoo Development</h1>
+            <p>
+                This app contains all base odoo development contents
+            </p>
+            <p><strong>Contents</strong></p>
+            <div class="contents local topic" id="contents">
+                <ul class="simple">
+                    <li><a class="reference internal" href="#multilayer_application" id="id1">Multilayer Application</a></li>
+                    <li><a class="reference internal" href="#mvc" id="id2">MVC</a></li>
+                    <li><a class="reference internal" href="#instance_navigation" id="id3">Instance Navigation</a></li>
+                    <li><a class="reference internal" href="#building_model" id="idbm">Building Model</a></li>
+                    <li><a class="reference internal" href="#views" id="idv">Views</a></li>
+                    <li><a class="reference internal" href="#actions" id="ida">Actions</a></li>
+                    <li><a class="reference internal" href="#menus" id="idm">Menus</a></li>
+                    <li><a class="reference internal" href="#orm_method" id="idorm_method">ORM Method</a></li>
+                    <li><a class="reference internal" href="#environment" id="idenvironment">Environment</a></li>
+                    <li><a class="reference internal" href="#security" id="idsecurity">Security</a></li>
+                    <li><a class="reference internal" href="#extention" id="idextention">Extention</a></li>
+                    <li><a class="reference internal" href="#system_parameter" id="idsystem_parameter">System Parameter</a></li>
+                    <li><a class="reference internal" href="#qweb_report" id="idqweb_report">QWeb Report</a></li>
+                    <li><a class="reference internal" href="#translate" id="idtranslate">Translate</a></li>
+                </ul>
+            </div>
+
+            <div class="section" id="multilayer_application">
+                <h1><a class="toc-backref" href="#id1">Multilayer Application</a></h1>
+                <ol>
+                   <blockquote>
+                        <div class="figure">
+                            <img alt="Multilayer Application" src="multilayer_application.png" style="width: 900px;" />
+                        </div>
+                   </blockquote>
+                </ol>
+            </div>
+            <div class="section" id="mvc">
+                <h1><a class="toc-backref" href="#id2">MVC</a></h1>
+                <p>Model View Controller</p>
+                <ol>
+                   <blockquote>
+                        <div class="figure">
+                            <img alt="MVC" src="mvc.png" style="width: 900px;" />
+                        </div>
+                   </blockquote>
+                    <ol class="arabic">
+                        <li><p class="first">Model: PostgreSQL table</p></li>
+                        <li><p class="first">View: views defined in XML files in Odoo</p></li>
+                        <li><p class="first">Controller: The objects of Odoo</p></li>
+                    </ol>
+                </ol>
+            </div>
+            <div class="section" id="instance_navigation">
+                <h1><a class="toc-backref" href="#id3">Instance Navigation</a></h1>
+                <p>Active developer mode</p>
+                <ol>
+                    <li><p class="first">Go to <tt class="docutils literal">Setting &gt; General Setting &gt; Developer Tools > Activate the developer mode </tt> link.</p></li>
+                   <blockquote>
+                        <div class="figure">
+                            <img alt="Instance Navigation Link" src="inistance_navigation_1.png" style="width: 900px;" />
+                        </div>
+                   </blockquote>
+                    <blockquote>
+                        <div class="figure">
+                            <img alt="Instance Navigation Debugger" src="inistance_navigation_2.png" style="width: 900px;" />
+                        </div>
+                   </blockquote>
+                    <blockquote>
+                        <div class="figure">
+                            <img alt="Instance Navigation Technical" src="inistance_navigation_3.png" style="width: 900px;" />
+                        </div>
+                   </blockquote>
+                </ol>
+            </div>
+            <div class="section" id="building_model">
+                <h1><a class="toc-backref" href="#idbm">Building Model</a></h1>
+                <p>docker exec -it postgres_image_name psql -d db_name --username=UserName</p>
+                <p>odoo scaffold model_name /mnt/extra-addons</p>
+                <ul class="simple">
+                    <li><a class="reference internal" href="#building_model_classes" id="idb1">Class</a></li>
+                    <li><a class="reference internal" href="#building_model_fields" id="idb2">Fields</a></li>
+                    <li><a class="reference internal" href="#building_model_decorator" id="idb3">Decorators</a></li>
+                    <li><a class="reference internal" href="#building_model_constraint" id="idb4">Constraint</a></li>
+                </ul>
+                <div class="section" id="building_model_classes">
+                    <h3><a class="toc-backref" href="#idb1">Class</a></h3>
+                    <p>Odoo models are created by inheriting one of the following:</p>
+                    <ol class="arabic">
+                        <li><p class="first">Model</p></li>
+                        <li><p class="first">TransientModel</p></li>
+                        <li><p class="first">AbstractModel</p></li>
+                    </ol>
+                </div>
+                <div class="section" id="building_model_fields">
+                    <h3><a class="toc-backref" href="#idb2">Fields</a></h3>
+                    <p>Parameters:</p>
+                    <ol class="arabic">
+                        <li><p class="first">string</p></li>
+                        <li><p class="first">help</p></li>
+                        <li><p class="first">invisible</p></li>
+                        <li><p class="first">readonly</p></li>
+                        <li><p class="first">required</p></li>
+                        <li><p class="first">index</p></li>
+                        <li><p class="first">default</p></li>
+                        <li><p class="first">states</p></li>
+                        <li><p class="first">groups</p></li>
+                        <li><p class="first">copy</p></li>
+                        <li><p class="first">store</p></li>
+                    </ol>
+                    <p>Odoo Fields:</p>
+                    <ol class="arabic">
+                        <li><p class="first">Char</p></li>
+                        <li><p class="first">Integer</p></li>
+                        <li><p class="first">Float</p></li>
+                        <li><p class="first">Text</p></li>
+                        <li><p class="first">Selection</p></li>
+                        <li><p class="first">Many2one</p></li>
+                        <li><p class="first">One2many</p></li>
+                        <li><p class="first">Many2many</p></li>
+                        <li><p class="first">Boolean</p></li>
+                        <li><p class="first">Date(time)</p></li>
+                        <blockquote>
+                            <div class="figure">
+                                <img alt="M2M" src="many2many_one2many.png" style="width: 900px;" />
+                            </div>
+                        </blockquote>
+                    </ol>
+                    <p>Computed Field Parameters:</p>
+                    <ol class="arabic">
+                        <li><p class="first">compute</p></li>
+                        <li><p class="first">compute_sudo</p></li>
+                        <li><p class="first">inverse</p></li>
+                        <li><p class="first">related</p></li>
+                    </ol>
+
+                </div>
+                <div class="section" id="building_model_decorator">
+                    <h3><a class="toc-backref" href="#idb3">Decorators</a></h3>
+                    <p></p>
+                    <ol class="arabic">
+                        <li><p class="first">onchange</p></li>
+                        <li><p class="first">constraints</p></li>
+                    </ol>
+                </div>
+                <div class="section" id="building_model_constraint">
+                    <h3><a class="toc-backref" href="#idb4">Constraints</a></h3>
+                    <p></p>
+                    <ol class="arabic">
+                        <li><p class="first">_sql_constraints</p></li>
+                        <li><p class="first">api.constraints</p></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="section" id="views">
+                <h1><a class="toc-backref" href="#idv">Views</a></h1>
+                <p></p>
+                <ol class="arabic">
+                    <li><p class="first">Tree</p></li>
+                    <li><p class="first">Form</p></li>
+                    <li><p class="first">Search</p></li>
+                    <li><p class="first">QWeb</p></li>
+                </ol>
+            </div>
+            <div class="section" id="actions">
+                <h1><a class="toc-backref" href="#ida">Actions</a></h1>
+                <p></p>
+                <ol class="arabic">
+                    <li><p class="first">Window Action</p></li>
+                     <li><p class="first">Server Action</p></li>
+                     <li><p class="first">Scheduale Action</p></li>
+                     <li><p class="first">Report Action</p></li>
+                </ol>
+            </div>
+            <div class="section" id="menus">
+                <h1><a class="toc-backref" href="#idm">Menus</a></h1>
+                <p></p>
+            </div>
+            <div class="section" id="orm_method">
+                <h1><a class="toc-backref" href="#idorm_method">ORM Method</a></h1>
+                <p>Fields Domain</p>
+                <ol class="arabic">
+                    <li><p class="first">Python Field Attribute</p></li>
+                    <li><p class="first">XML Field attribute</p></li>
+                    <li><p class="first">Python Method</p></li>
+                </ol>
+                <p>Search</p>
+                <ol class="arabic">
+                    Model.search(domain[, offset=0][, limit=None][, order=None][, count=False])
+                </ol>
+                <p>Search Count</p>
+                <ol class="arabic">
+                    Model.search_count(domain)
+                </ol>
+                <p>Read</p>
+                <ol class="arabic">
+                    Model.read([fields])
+                </ol>
+                <p>Browse</p>
+                <ol class="arabic">
+                    Model.browse([ids]) → records
+                </ol>
+                <p>Read Group</p>
+                <ol class="arabic">
+                    Model.read_group(domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True)
+                </ol>
+                <p>Unlink</p>
+                <ol class="arabic">
+                    Model.unlink()
+                </ol>
+                <p>Create</p>
+                <ol class="arabic">
+                    Model.create({})
+                </ol>
+                <p>Write/Update</p>
+                <ol class="arabic">
+                    Model.update({})
+                </ol>
+                <p>Copy</p>
+                <ol class="arabic">
+                    Model.copy(default={})
+                </ol>
+            </div>
+            <div class="section" id="environment">
+                <h1><a class="toc-backref" href="#idenvironment">Environment</a></h1>
+                <p>Method</p>
+                <ol class="arabic">
+                    <li><p class="first">Environment.ref</p></li>
+                    <li><p class="first">Environment.user</p></li>
+                    <li><p class="first">Environment.tz</p></li>
+                    <li><p class="first">Model.with_context</p></li>
+                    <li><p class="first">Model.with_user</p></li>
+                    <li><p class="first">Model.sudo</p></li>
+                </ol>
+            </div>
+            <div class="section" id="security">
+                <h1><a class="toc-backref" href="#idsecurity">Security</a></h1>
+                <p>Group</p>
+                <ol class="arabic">
+                    <li><p class="first">Field Group</p></li>
+                    <li><p class="first">Menu Group</p></li>
+                    <li><p class="first">View Group</p></li>
+                </ol>
+                <p>Access Rights</p>
+                <ol class="arabic">
+                    <li><p class="first">Public</p></li>
+                    <li><p class="first">Group Based</p></li>
+                </ol>
+                <p>Record Rule</p>
+                <ol class="arabic">
+                    <li><p class="first">Global</p></li>
+                    <li><p class="first">Group-specific</p></li>
+                </ol>
+            </div>
+            <div class="section" id="extention">
+                <h1><a class="toc-backref" href="#idextention">Extention</a></h1>
+                <ol class="arabic">
+                    <li><p class="first">Extend Model</p></li>
+                    <li><p class="first">Extend View</p></li>
+                    <li><p class="first">Extend Method</p></li>
+                </ol>
+            </div>
+            <div class="section" id="system_parameter">
+                <h1><a class="toc-backref" href="#idsystem_parameter">System Parameter</a></h1>
+                <p>Add System Parameter and use it</p>
+            </div>
+        </div>
+    </body>
+</html>

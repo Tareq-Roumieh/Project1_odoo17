@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record id="feedback_reason_form_view" model="ir.ui.view">
+            <field name="name">feedback.reason.view.form</field>
+            <field name="model">feedback.reason</field>
+            <field name="arch" type="xml">
+                <form>
+                        <group>
+                            <field name="reason"/>
+                        </group>
+                    <footer>
+                        <button name="add_reason" string="Add" type="object" class="oe_highlight"/>
+                        <button string='Close' class='btn-default' special='cancel'/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="feedback_reason_window">
+            <field name="name">Feedback Reason</field>
+            <field name="res_model">feedback.reason</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>
